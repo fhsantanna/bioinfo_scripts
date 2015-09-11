@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-#Extract nucleotide sequences from all CDSs of a genbank file. Usage "python extract_CDS.py file.gbk". This script needs BioPython. 
+#Extract nucleotide sequences from all CDSs of a genbank file to a fasta file. Usage "python extract_CDS.py file.gbk > output.fas". This script needs BioPython. 
 
 from Bio import SeqIO
 import sys
