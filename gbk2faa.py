@@ -2,6 +2,7 @@
 
 #This script is a modification of the script found in Peter Cock's site (http://www2.warwick.ac.uk/fac/sci/moac/people/students/peter_cock/python/genbank2fasta/).
 # Usage: python gbk2faa.py <input> <output>
+# It crashes when it finds a CDS without translation (pseudogene).
 
 import sys
 from Bio import GenBank
