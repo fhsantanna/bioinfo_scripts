@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+#Cria arquivos ptt e rnt a partir de um arquivo genbank. Útil para a utilização do EDGE-pro (Estimated Degree of Gene Expression for Prokaryotes).
+
 from Bio import SeqIO
 annotation_file = "P_riograndensis_LN831776.gbk"
 rnt_file = "P_riograndensis_LN831776.rnt"
