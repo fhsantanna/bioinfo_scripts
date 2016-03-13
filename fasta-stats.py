@@ -4,6 +4,7 @@
 fasta-stats.py: Utility script to count number of nucleotides/Aminoacids in a FASTA files.
 
 Version 1.0
+Downloaded from https://techoverflow.net/blog/2013/10/24/a-simple-tool-for-fasta-statistics/
 """
 from __future__ import with_statement
 import sys
