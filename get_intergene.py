@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#Got this script from http://biopython.org/wiki/Intergenic_regions
 import sys
 import Bio
 from Bio import SeqIO, SeqFeature
