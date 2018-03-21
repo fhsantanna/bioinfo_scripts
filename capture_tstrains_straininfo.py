@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+#Captura linhagens-tipo de espécies de Paenibacillus descritas no StrainInfo
+
 import requests
 from bs4 import BeautifulSoup
 
