@@ -10,12 +10,13 @@
 
 import re
 
-#infilename = "paenibacillus_lpsn.txt"
-#with open(infilename, "r") as infile:
-#infile_content = infile.read()
-
 strain = input("Type the name of the genus of interest (e.g. escherichia): ")
+outfile_name = input("Type the name of the output file: ")
+
 url = "http://bacterio.net/" + strain.lower() + ".html"
+
+outfile = open(outfile_name, "a")
+outfile.write("Species" + "\t" + "Strain" + "\t" + "Accession number" + "\n")
 
 from bs4 import BeautifulSoup
 import requests
@@ -23,10 +24,10 @@ import requests
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 text = soup.get_text()
-#text
+text_ed = text.replace("\r\n","\n")
 
-pattern = "({0}.*)\r\n.*\nType strain: .*\.net\)  (.*)\.\r\n.*\nSequence.*strain\: (.*)\.\r\n".format(strain.title())
-lista = re.findall(pattern, text)
+pattern = " *({0}.+)\n.*\n *Type.+\.net\) *(.+)\..*\n.*\n *Sequence.+\: *(.+)\.".format(strain.title())
+lista = re.findall(pattern, text_ed)
 
 for species in (range(0,len(lista))):
     strains = lista[species][1].split("=")
@@ -38,4 +39,6 @@ for species in (range(0,len(lista))):
             sname = " ".join(name_split[0:2])
         else:
             sname = " ".join(name_split[0:4])
-        print(sname + "\t" + strain + "\t" + anumber16S)
+        outfile.write(sname + "\t" + strain + "\t" + anumber16S + "\n")
+
+outfile.close()
