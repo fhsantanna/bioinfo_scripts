@@ -1,16 +1,32 @@
 #/usr/bin/env python
 
-#Transforma texto do LPSN (copiar da página) em tabela contendo nome da espécie, linhagens e número de acesso do 16S.
+#Author: Dr. Fernando Hayashi Sant'Anna
+#Date: 03/26/2018
+
+#Captura código das linhagens e número acesso de espécies do gênero de interesse a partir do LPSN.
+#This script accesses bacterio.net(LPSN), captures type strain codes and 16S rRNA accession numbers from species of a genus of interest, generating a table as output.
+
+#Usage: python get_strains_lpsn.py
 
 import re
 
-infilename = "paenibacillus_lpsn.txt"
+#infilename = "paenibacillus_lpsn.txt"
+#with open(infilename, "r") as infile:
+#infile_content = infile.read()
 
-with open(infilename, "r") as infile:
-    infile_content = infile.read()
+strain = input("Type the name of the genus of interest (e.g. escherichia): ")
+url = "http://bacterio.net/" + strain.lower() + ".html"
 
-pattern = "(Paenibacillus.*)\nType strain:.*\.net\)(.*)\nSequence.*: (.*)."
-lista = re.findall(pattern, infile_content)
+from bs4 import BeautifulSoup
+import requests
+
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+text = soup.get_text()
+#text
+
+pattern = "({0}.*)\r\n.*\nType strain: .*\.net\)  (.*)\.\r\n.*\nSequence.*strain\: (.*)\.\r\n".format(strain.title())
+lista = re.findall(pattern, text)
 
 for species in (range(0,len(lista))):
     strains = lista[species][1].split("=")
