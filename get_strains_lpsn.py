@@ -9,6 +9,7 @@
 #Usage: python get_strains_lpsn.py <strain> <output>
 
 import re
+import sys
 
 strain = sys.argv[1]
 outfile_name = sys.argv[2]
