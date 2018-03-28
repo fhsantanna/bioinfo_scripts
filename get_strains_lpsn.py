@@ -6,12 +6,15 @@
 #Captura código das linhagens e número acesso de espécies do gênero de interesse a partir do LPSN.
 #This script accesses bacterio.net(LPSN), captures type strain codes and 16S rRNA accession numbers from species of a genus of interest, generating a table as output.
 
-#Usage: python get_strains_lpsn.py
+#Usage: python get_strains_lpsn.py <strain> <output>
 
 import re
 
-strain = input("Type the name of the genus of interest (e.g. escherichia): ")
-outfile_name = input("Type the name of the output file: ")
+strain = sys.argv[1]
+outfile_name = sys.argv[2]
+
+#strain = input("Type the name of the genus of interest (e.g. escherichia): ")
+#outfile_name = input("Type the name of the output file: ")
 
 url = "http://bacterio.net/" + strain.lower() + ".html"
 
