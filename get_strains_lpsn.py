@@ -28,9 +28,11 @@ import requests
 page = requests.get(url)
 soup = BeautifulSoup(page.content, 'html.parser')
 text = soup.get_text()
-text_ed = text.replace("\r\n","\n")
+text_ed = text.replace("\r\n","\n").replace("(see also StrainInfo.net)  ","")
 
-pattern = " *({0}.+)\n.*\n *Type.+\.net\) *(.+)\..*\n.*\n *Sequence.+\: *(.+)\.".format(strain.title())
+#pattern = " *({0}.+)\n.*\n *Type.+\.net\) *(.+)\..*\n.*\n *Sequence.+\: *(.+)\.".format(strain.title())
+pattern = " *({0}.+)\n.*\n *Type.+: *(.+)\..*\n.*\n *Sequence.+\: *(.+)\.".format(lista_rhizobiales[genus].title())
+
 lista = re.findall(pattern, text_ed)
 
 for species in (range(0,len(lista))):
