@@ -15,7 +15,7 @@ output = "tabela_estat.txt"
 with open(output, "a+") as f:
         f.write("type_strain" + "\t" + "vp_strain" + "\t" + "fp_strain" + "\t" + "vn_strain" + "\t" + "fn_strain" + "\t" + "precision_strain" + "\t" + "tx_fn_strain" + "\t" + "tx_fp_strain" + "\n")
         
-lista = ["GCF_000236805.1_Paenibacillus_peoriae_KCTC_3763", "GCF_000217775.1_Paenibacillus_polymyxa_ATCC_842", "GCF_000316285.1_Paenibacillus_sonchi_X19-5"] #adicionar aqui as tipos
+lista = ["GCF_000217775.1_Paenibacillus_polymyxa_ATCC_842", "GCF_000316285.1_Paenibacillus_sonchi_X19-5", "GCF_000346635.1_Paenibacillus_sp._A9_A9", "GCF_000971985.1_Paenibacillus_dauci_H9", "GCF_000293805.1_Paenibacillus_alvei_DSM_29", "GCF_000993825.1_Paenibacillus_durus_ATCC_35681", "GCF_900156375.1_Paenibacillus_macquariensis_ATCC_23464", "GCF_001637165.1_Paenibacillus_macquariensis_DSM_2", "GCF_900156375.1_Paenibacillus_macquariensis_ATCC_23464", "GCF_001637215.1_Paenibacillus_macquariensis_JCM_14954", "GCF_000758725.1_Paenibacillus_odorifer_DSM_15391", "GCF_000236805.1_Paenibacillus_peoriae_KCTC_3763"] #adicionar aqui as tipos
 
 def precision_calc(vp, fp):
     prec = (vp / (vp + fp)) * 100
