@@ -30,11 +30,11 @@ def tx_fp_calc(fp, vn):
     return tx_fp
 
 for type_strain in lista:
-    strain_table = ani[["index", type_strain]] #fica com coluna da tipo
+    strain_table = ani[["Index", type_strain]] #fica com coluna da tipo
     
     specific_name = type_strain.split("_")[3]
-    rows_strain = strain_table[strain_table["index"].str.contains(specific_name)] #fica com linhas contendo nome especìfico
-    rows_not_strain = strain_table[~strain_table["index"].str.contains(specific_name)] #fica com linhas sem nome específico   
+    rows_strain = strain_table[strain_table["Index"].str.contains(specific_name)] #fica com linhas contendo nome especìfico
+    rows_not_strain = strain_table[~strain_table["Index"].str.contains(specific_name)] #fica com linhas sem nome específico   
      
     #calculo vp
     vp_temp = rows_strain[(rows_strain[type_strain] >= 0.95)].count() - 1
