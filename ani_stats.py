@@ -66,6 +66,5 @@ for type_strain in lista:
     print(type_strain)
     
     with open(output, "a+") as f:
-        f.write(type_strain + "\t" + str(vp_strain) + "\t" + str(fp_strain) + "\t" + str(vn_strain) + "\t" + str(fn_strain) + 
-                "\t" + str(prec_strain) + "\t" + str(tx_fn_strain) + "\n") + str(tx_fn_strain) + "\n" + str(tx_fp_strain))        
+        f.write(type_strain + "\t" + str(vp_strain) + "\t" + str(fp_strain) + "\t" + str(vn_strain) + "\t" + str(fn_strain) + "\t" + str(prec_strain) + "\t" + str(tx_fn_strain) + "\n") + str(tx_fn_strain) + "\n" + str(tx_fp_strain))        
         
