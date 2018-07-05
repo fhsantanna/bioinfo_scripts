@@ -13,7 +13,7 @@ ani = pd.read_csv("ANIb_percentage_identity.tab", sep="\t")
 output = "tabela_estat.txt"
 
 with open(output, "a+") as f:
-        f.write("type_strain" + "\t" + "vp_strain" + "\t" + "fp_strain" + "\t" + "vn_strain" + "\t" + "fn_strain" + "\t" + "acc_strain" + "\t" + "tx_fn_strain" + "\n")
+        f.write("type_strain" + "\t" + "vp_strain" + "\t" + "fp_strain" + "\t" + "vn_strain" + "\t" + "fn_strain" + "\t" + "precision_strain" + "\t" + "tx_fn_strain" + "\t" + "tx_fp_strain" + "\n")
         
 lista = ["GCF_000236805.1_Paenibacillus_peoriae_KCTC_3763", "GCF_000217775.1_Paenibacillus_polymyxa_ATCC_842", "GCF_000316285.1_Paenibacillus_sonchi_X19-5"] #adicionar aqui as tipos
 
@@ -66,5 +66,5 @@ for type_strain in lista:
     print(type_strain)
     
     with open(output, "a+") as f:
-        f.write(type_strain + "\t" + str(vp_strain) + "\t" + str(fp_strain) + "\t" + str(vn_strain) + "\t" + str(fn_strain) + "\t" + str(prec_strain) + "\t" + str(tx_fn_strain) + "\n") + str(tx_fn_strain) + "\n" + str(tx_fp_strain))        
+        f.write(type_strain + "\t" + str(vp_strain) + "\t" + str(fp_strain) + "\t" + str(vn_strain) + "\t" + str(fn_strain) + "\t" + str(prec_strain) + "\t" + str(tx_fn_strain) + "\t" + str(tx_fp_strain) + "\n")        
         
