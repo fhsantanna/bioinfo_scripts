@@ -54,7 +54,7 @@ for type_strain in lista:
     fn_temp = rows_not_strain[(rows_not_strain[type_strain]) >= 0.95].count()
     fn_strain = fn_temp[type_strain]
    
-    #acuracia
+    #precisao
     prec_strain = precision_calc(vp_strain, fp_strain)
     
     #taxa fn
