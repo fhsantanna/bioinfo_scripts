@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+#usage: python2 gb_slicer.py -g genome.gbk -o sliced.gbk -s 100 -e 5000 -f genome.fas
+
 # This script is designed to take a genbank file and 'slice out'/'subset'
 # regions (genes/operons etc.) and produce a separate file. This can be
 # done explicitly by telling the script which base sites to use, or can
