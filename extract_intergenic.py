@@ -2,6 +2,8 @@
 #!/usr/bin/env python
 
 #Extract intergenic sequences from all CDSs of a genbank file to a fasta file. Usage "python extract_intergenic.py file.gbk > output.fas". This script needs BioPython. 
+#Firstly, intergenic sequences should be tagged with Artemis.
+
 
 from Bio import SeqIO
 import sys
