@@ -72,7 +72,7 @@ my %keep;
 map {$keep{$_}++} @keep;
 my $in = Bio::SeqIO->new(-fh => \*IN, -format => "genbank");
 while ( my $seq = $in->next_seq() ) {
-my $chr = $seq->accession_number;
+my $chr = join(".", $seq->accession, $seq->version); #modifiquei para juntar n_de_acesso e versao
 
 my @all_SeqFeatures = $seq->get_all_SeqFeatures;
 
