@@ -10,7 +10,7 @@ for file in *.gbk; do
 	bedtools complement -i `basename $file .gbk`.genes -g `basename $file .gbk`.genome > `basename $file .gbk`.inter
 	bedtools getfasta -fi `basename $file .gbk`.fasta -bed `basename $file .gbk`.inter >  `basename $file .gbk`.inter.fas
 	cat `basename $file .gbk`.genes.fas `basename $file .gbk`.inter.fas | perl seq-shuf.pl > `basename $file .gbk`_shuf.fas
-	echo ">`basename $file .gbk`_shuf" > `basename $file .gbk`_fake.fasta
+	echo ">`basename $file .gbk`_shuf" > `basename $file .gbk`_shuf_fake.fasta
 	grep -v "^>" `basename $file .gbk`_shuf.fas | awk 'BEGIN { ORS="";} { print }' >> `basename $file .gbk`_shuf_fake.fasta
 	echo -e "\n" >> `basename $file .gbk`_shuf_fake.fasta
 done
