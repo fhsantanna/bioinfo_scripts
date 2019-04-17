@@ -5,9 +5,8 @@ import sys
 
 
 for seq_record in SeqIO.parse(sys.stdin, "genbank"):
-	with open("{}.fasta".format(str(seq_record.id)), "w") as output_handle:
-		output_handle.write(">%s %s\n%s\n" % (
-           seq_record.id,
-           seq_record.description,
-           seq_record.seq))
+	with open("{}.fasta".format(str(seq_record.description)), "w") as output_handle:
+		output_handle.write(">%s\n%s\n" % (
+            seq_record.description,
+            seq_record.seq))
 print("Converted {} records".format(seq_record.id))
