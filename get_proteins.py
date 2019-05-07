@@ -1,23 +1,36 @@
 #!/usr/bin/env python
 
-#Script for getting proteins in a range from a genbank file
-#Usage: python get_proteins.py file start:end
+#This script is a modification of the script found in Peter Cock's site (http://www2.warwick.ac.uk/fac/sci/moac/people/students/peter_cock/python/genbank2fasta/).
+# Usage: python gbk2faa.py <input> start:end <output>
 
 import sys
+from Bio import GenBank
 from Bio import SeqIO
 
-rec = SeqIO.read(sys.argv[1], 'genbank')
-feats = [feat for feat in rec.features if feat.type == "CDS"]
-start, end = sys.argv[2].split(':')
+input_handle  = open(sys.argv[1], "r")
+output_handle = open(sys.argv[3], "w")
 
-desired = set(range(int(start),int(end),1))
+desired_interval = sys.argv[2].split(':')
+start = int(desired_interval[0])
+end = int(desired_interval[1])
+#desired_interval = set(range(int(start),int(end),1))
 
-for f in feats:
-    span = set(range(f.location._start.position, f.location._end.position))
-    if span & desired:
-        print(">%s,%s,%d:%d\n%s\n" % (
-					f.qualifiers['locus_tag'][0],
-					f.qualifiers['product'][0],
-					f.location._start.position,
-					f.location._end.position,
-					f.qualifiers['translation'][0]))
+for seq_record in SeqIO.parse(input_handle, "genbank") :
+	print("Dealing with GenBank record %s" % seq_record.id)
+	for seq_feature in seq_record[start:end].features :
+		try: # Without "try", it crashes when it finds a CDS without translation (pseudogene).
+			if seq_feature.type=="CDS" :
+				assert len(seq_feature.qualifiers['translation'])==1
+				output_handle.write(">%s,%s,%s,%s\n%s\n" % (
+					seq_feature.qualifiers['locus_tag'][0],
+					seq_feature.qualifiers['product'][0],
+					seq_record.id,
+					seq_record.description,
+					seq_feature.qualifiers['translation'][0]))
+				pass
+		except:
+			continue
+
+output_handle.close()
+input_handle.close()
+print("Done")
