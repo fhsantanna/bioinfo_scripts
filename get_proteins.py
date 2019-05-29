@@ -21,9 +21,10 @@ for seq_record in SeqIO.parse(input_handle, "genbank") :
 		try: # Without "try", it crashes when it finds a CDS without translation (pseudogene).
 			if seq_feature.type=="CDS" :
 				assert len(seq_feature.qualifiers['translation'])==1
-				output_handle.write(">{}    {},{},{},{}\n{}\n".format(
+				output_handle.write(">{}    {},{},{},{},{}\n{}\n".format(
 					seq_feature.qualifiers['protein_id'][0],
 					seq_feature.qualifiers['locus_tag'][0],
+					seq_feature.location,
 					seq_feature.qualifiers['product'][0],
 					seq_record.id,
 					seq_record.description,
