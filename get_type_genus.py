@@ -34,9 +34,16 @@ species_type = re.findall(pattern_type_species, text_ed)[0]
 genus_type = species_type.split(" ")[0]
 epythet_type = species_type.split(" ")[1]
 
-pattern_accession = " *{0} {1}.+\n.*\n *Type.*: *(.*)\..*\n.*\n *Sequence.*\: *(.+)\.".format(genus_type.title(), epythet_type)
+pattern_accession = "{0} {1}.*\n.*\n.*Type.+:.*\n.*\n.*Sequence.*\: *(.+)\.".format(genus_type.title(), epythet_type)
+pattern_accession_2 = "{0} {1}.*\n.*\n.*Type.+:.*\n.*Sequence.*\: *(.+)\.".format(genus_type.title(), epythet_type)
+pattern_accession_3 = "{0} {1}.*Type.*Sequence accession no. \(16S rRNA gene\) for the type strain\: (.+)\. *Etymology".format(genus_type.title(), epythet_type)
 
-accession = re.findall(pattern_accession, text_ed)[0]
+if re.search(pattern_accession, text_ed):
+    accession = re.findall(pattern_accession, text_ed)[0]
+elif re.search(pattern_accession_2, text_ed):
+    accession = re.findall(pattern_accession_2, text_ed)[0]
+else:
+    accession = re.findall(pattern_accession_3, text_ed)[0]
 
 outfile.write(genus + "\t" + species_type + "\t" + accession + "\n")
 
