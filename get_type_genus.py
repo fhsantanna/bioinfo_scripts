@@ -34,7 +34,7 @@ species_type = re.findall(pattern_type_species, text_ed)[0]
 genus_type = species_type.split(" ")[0]
 epythet_type = species_type.split(" ")[1]
 
-pattern_accession = " *{0} {1}.+\n.*\n *Type.+: *.+\..*\n.*\n *Sequence.+\: *(.+)\.".format(genus_type.title(), epythet_type)
+pattern_accession = " *{0} {1}.+\n.*\n *Type.*: *(.*)\..*\n.*\n *Sequence.*\: *(.+)\.".format(genus_type.title(), epythet_type)
 
 accession = re.findall(pattern_accession, text_ed)[0]
 
