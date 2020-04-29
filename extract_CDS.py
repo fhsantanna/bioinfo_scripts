@@ -9,4 +9,4 @@ for rec in SeqIO.parse(open(sys.argv[1],"rU"),"genbank"):
     if rec.features:
         for feature in rec.features:
             if feature.type == "CDS":
-                print ">%s|%s\n%s" % (feature.qualifiers["locus_tag"],feature.location,feature.location.extract(rec).seq)
+                print(">%s|%s\n%s" % (feature.qualifiers["locus_tag"][0],feature.location,feature.location.extract(rec).seq))
