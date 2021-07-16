@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+#Identify differential characters between a pair of aligned sequences.
+#usage: ./check_mut.py file.fasta > file.csv
+
 from Bio import AlignIO
 import sys
 
